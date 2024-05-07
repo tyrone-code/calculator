@@ -17,29 +17,70 @@ let equals = document.getElementById("equals");
 
 let val1 = "";
 let val2 = "";
+// this is to allow us to determine if its the first num on the left side or right side,
+// if it turns true, the program will add number on the right side. if false, add on the left side
+//e.g   if (operatorCondition === false) {
+//     val1 += "0";
+//     display.textContent += "0";
+//   } else if (operatorCondition === true) {
+//     display.textContent += "0";
+//     val2 += "0";
+//     val2Result = true;
+//   }
+// });
 let operatorCondition = false;
-let wasOperatorClicked = false;
-let operator = "";
-let equalswasClicked = false;
-let numVal2WasClicked = false;
+// this allows us to add only one operator at a time. if it turns true no operator will be appended
+// if a user presses a operator it will turn true e.g
+// plus.addEventListener("click", () => {
+//   if (wasOperatorClicked === false) {
+//     operator = "+";
+//     display.textContent += "+";
+//     wasOperatorClicked = true;
+//   }
 
-let resetValues = function () {
-  val = "";
-  val2 = "";
-};
-// let numA = new Number(val1); // "8.1"
-// let numbB = new Number(val2);
-// console.log(numA + numB); // "9.1"
-// var total = numberA + numberA; // 17.2
-// console.log(total);
+//   operatorCondition = true;
+// });
+let wasOperatorClicked = false;
+// this is used to calculate the functions at the bottom when equals is clicked
+let operator = "";
+//onsole.log(result);
+// this is to show that if this is true, the final result is calculated if a user clicks on
+// another num afterwards it resets the values.
+//eg   if (resultCalculated === true) {
+//   display.textContent = "";
+//   resultCalculated = false;
+
+//   val1 = "";
+//   val2 = "";
+// }
+let resultCalculated = false;
+let result = 0;
+let val2Result = false;
+let equalsWasClicked = false;
+console.log(resultCalculated);
 plus.addEventListener("click", () => {
   if (wasOperatorClicked === false) {
     operator = "+";
-    display.innerText += "+";
+    display.textContent += "+";
     wasOperatorClicked = true;
   }
-  // if (numVal2WasClicked === true) {
-  //   someFunction()
+  if (resultCalculated === true) {
+    operatorCondition = true;
+    resultCalculated = false;
+    val1 = result;
+    console.log("result was calculated");
+    val2 = "";
+    // result = add(val1, val2);
+    // val1 = result;
+    // val2 = "";
+    // display.textContent = val1;
+    // wasOperatorClicked = false;
+    // operatorCondition = false;
+    // val2Result = false;
+  }
+
+  // if (equalsWasClicked === true) {
+  //   console.log("equals was clicked!");
   // }
 
   operatorCondition = true;
@@ -47,37 +88,57 @@ plus.addEventListener("click", () => {
 subtract.addEventListener("click", () => {
   if (wasOperatorClicked === false) {
     operator = "-";
-    display.innerText += "-";
+    display.textContent += "-";
     wasOperatorClicked = true;
   }
-
+  if (resultCalculated === true) {
+    operatorCondition = true;
+    resultCalculated = false;
+    val1 = result;
+    console.log("result was calculated");
+    val2 = "";
+  }
   operatorCondition = true;
 });
 multiply.addEventListener("click", () => {
   if (wasOperatorClicked === false) {
     operator = "x";
-    display.innerText += "x";
+    display.textContent += "x";
     wasOperatorClicked = true;
   }
-
+  if (resultCalculated === true) {
+    operatorCondition = true;
+    resultCalculated = false;
+    val1 = result;
+    console.log("result was calculated");
+    val2 = "";
+  }
   operatorCondition = true;
 
-  // if operator condition > 1 dont do anything
+  // if operator condition > 1 dont do anything    operator = "";
 });
 
 division.addEventListener("click", () => {
   if (wasOperatorClicked === false) {
     operator = "/";
-    display.innerText += "/";
+    display.textContent += "/";
     wasOperatorClicked = true;
+  }
+  if (resultCalculated === true) {
+    operatorCondition = true;
+    resultCalculated = false;
+    val1 = result;
+    console.log("result was calculated");
+    val2 = "";
   }
 
   // if operator condition > 1 dont do anything
 });
 zero.addEventListener("click", () => {
-  if (equalswasClicked == true) {
+  if (resultCalculated === true) {
     display.textContent = "";
-    equalswasClicked = false;
+    resultCalculated = false;
+
     val1 = "";
     val2 = "";
   }
@@ -87,13 +148,14 @@ zero.addEventListener("click", () => {
   } else if (operatorCondition === true) {
     display.textContent += "0";
     val2 += "0";
+    val2Result = true;
   }
 });
 
 one.addEventListener("click", () => {
-  if (equalswasClicked == true) {
+  if (resultCalculated === true) {
     display.textContent = "";
-    equalswasClicked = false;
+    resultCalculated = false;
     val1 = "";
     val2 = "";
   }
@@ -101,15 +163,15 @@ one.addEventListener("click", () => {
     val1 += "1";
     display.textContent += "1";
   } else if (operatorCondition === true) {
-    numVal2WasClicked = true;
     display.textContent += "1";
     val2 += "1";
+    val2Result = true;
   }
 });
 two.addEventListener("click", () => {
-  if (equalswasClicked == true) {
+  if (resultCalculated === true) {
     display.textContent = "";
-    equalswasClicked = false;
+    resultCalculated = false;
     val1 = "";
     val2 = "";
   }
@@ -119,12 +181,13 @@ two.addEventListener("click", () => {
   } else if (operatorCondition === true) {
     display.textContent += "2";
     val2 += "2";
+    val2Result = true;
   }
 });
 three.addEventListener("click", () => {
-  if (equalswasClicked == true) {
+  if (resultCalculated === true) {
     display.textContent = "";
-    equalswasClicked = false;
+    resultCalculated = false;
     val1 = "";
     val2 = "";
   }
@@ -134,12 +197,13 @@ three.addEventListener("click", () => {
   } else if (operatorCondition === true) {
     display.textContent += "3";
     val2 += "3";
+    val2Result = true;
   }
 });
 four.addEventListener("click", () => {
-  if (equalswasClicked == true) {
+  if (resultCalculated === true) {
     display.textContent = "";
-    equalswasClicked = false;
+    resultCalculated = false;
     val1 = "";
     val2 = "";
   }
@@ -149,12 +213,13 @@ four.addEventListener("click", () => {
   } else if (operatorCondition === true) {
     display.textContent += "4";
     val2 += "4";
+    val2Result = true;
   }
 });
 five.addEventListener("click", () => {
-  if (equalswasClicked == true) {
+  if (resultCalculated === true) {
     display.textContent = "";
-    equalswasClicked = false;
+    resultCalculated = false;
     val1 = "";
     val2 = "";
   }
@@ -164,12 +229,13 @@ five.addEventListener("click", () => {
   } else if (operatorCondition === true) {
     display.textContent += "5";
     val2 += "5";
+    val2Result = true;
   }
 });
 six.addEventListener("click", () => {
-  if (equalswasClicked == true) {
+  if (resultCalculated === true) {
     display.textContent = "";
-    equalswasClicked = false;
+    resultCalculated = false;
     val1 = "";
     val2 = "";
   }
@@ -179,13 +245,14 @@ six.addEventListener("click", () => {
   } else if (operatorCondition === true) {
     display.textContent += "6";
     val2 += "6";
+    val2Result = true;
   }
 });
 
 seven.addEventListener("click", () => {
-  if (equalswasClicked == true) {
+  if (resultCalculated === true) {
     display.textContent = "";
-    equalswasClicked = false;
+    resultCalculated = false;
     val1 = "";
     val2 = "";
   }
@@ -195,13 +262,14 @@ seven.addEventListener("click", () => {
   } else if (operatorCondition === true) {
     display.textContent += "7";
     val2 += "7";
+    val2Result = true;
   }
 });
 
 eight.addEventListener("click", () => {
-  if (equalswasClicked == true) {
+  if (resultCalculated === true) {
     display.textContent = "";
-    equalswasClicked = false;
+    resultCalculated = false;
     val1 = "";
     val2 = "";
   }
@@ -211,13 +279,14 @@ eight.addEventListener("click", () => {
   } else if (operatorCondition === true) {
     display.textContent += "8";
     val2 += "8";
+    val2Result = true;
   }
 });
 
 nine.addEventListener("click", () => {
-  if (equalswasClicked == true) {
+  if (resultCalculated === true) {
     display.textContent = "";
-    equalswasClicked = false;
+    resultCalculated = false;
     val1 = "";
     val2 = "";
   }
@@ -227,6 +296,7 @@ nine.addEventListener("click", () => {
   } else if (operatorCondition === true) {
     display.textContent += "9";
     val2 += "9";
+    val2Result = true;
   }
 });
 let add = function (inputValue1, inputValue2) {
@@ -244,20 +314,35 @@ let divide = function (inputValue1, inputValue2) {
   return new Number(inputValue1) / new Number(inputValue2);
 };
 equals.addEventListener("click", () => {
-  operatorCondition = false;
-  wasOperatorClicked = false;
-  equalswasClicked = true;
-  if (operator === "+") {
+  equalsWasClicked = true;
+  if (operator === "+" && val2Result === true) {
     result = add(val1, val2);
     display.textContent = result;
-  } else if (operator === "x") {
+    resultCalculated = true;
+    console.log(resultCalculated);
+    operatorCondition = false;
+    wasOperatorClicked = false;
+    val2Result = false;
+  } else if (operator === "x" && val2Result === true) {
     result = multiplication(val1, val2);
     display.textContent = result;
-  } else if (operator === "-") {
+    resultCalculated = true;
+    operatorCondition = false;
+    wasOperatorClicked = false;
+    val2Result = false;
+  } else if (operator === "-" && val2Result === true) {
     result = subtraction(val1, val2);
     display.textContent = result;
-  } else if (operator === "/") {
+    resultCalculated = true;
+    operatorCondition = false;
+    wasOperatorClicked = false;
+    val2Result = false;
+  } else if (operator === "/" && val2Result === true) {
     result = divide(val1, val2);
     display.textContent = result;
+    resultCalculated = true;
+    operatorCondition = false;
+    wasOperatorClicked = false;
+    val2Result = false;
   }
 });
