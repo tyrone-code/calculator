@@ -41,11 +41,12 @@ let operatorCondition = false;
 //   operatorCondition = true;
 // });
 let wasOperatorClicked = false;
-// this is used to calculate the functions at the bottom when equals is clicked
+// this is used to calculate the functions at the bottom when equals is clicked depending on what operator
+// it will calculate the function based on the operator
 let operator = "";
-//onsole.log(result);
 // this is to show that if this is true, the final result is calculated if a user clicks on
 // another num afterwards it resets the values.
+// (clicking on a number)
 //eg   if (resultCalculated === true) {
 //   display.textContent = "";
 //   resultCalculated = false;
@@ -53,11 +54,22 @@ let operator = "";
 //   val1 = "";
 //   val2 = "";
 // }
+// or to add another operator on the result for further calculations
+//e.g if plus operator is clicked after the result is shown, add another number again and calculate from the result
+// if (resultCalculated === true) {
+//   operatorCondition = true; //stays true to add num on left side
+//   resultCalculated = false;// false in case we want to calculate again if we click the equals
+//   val1 = result; // val1 is now result
+//   val2 = "";// val2 is empty because user will populate the second value as value 1 is already the previous result
+// }
 let resultCalculated = false;
+//this is global so that we can interject the result variable anywhere, not good practise but for \
+//now as a beginner its viable
+
 let result = 0;
+
+/// used to reset the values if this is true and result is true the nums will reset and clear the values
 let val2Result = false;
-let equalsWasClicked = false;
-console.log(resultCalculated);
 plus.addEventListener("click", () => {
   if (wasOperatorClicked === false) {
     operator = "+";
@@ -65,24 +77,57 @@ plus.addEventListener("click", () => {
     wasOperatorClicked = true;
   }
   if (resultCalculated === true) {
-    operatorCondition = true;
-    resultCalculated = false;
-    val1 = result;
+    operatorCondition = true; // so that left side num can be calculated
+    resultCalculated = false; // so that it doesn't disappear
+    val1 = result; // result is now val1
     console.log("result was calculated");
-    val2 = "";
-    // result = add(val1, val2);
-    // val1 = result;
-    // val2 = "";
-    // display.textContent = val1;
-    // wasOperatorClicked = false;
-    // operatorCondition = false;
-    // val2Result = false;
+    val2 = ""; // val2 is now empty
   }
-
-  // if (equalsWasClicked === true) {
-  //   console.log("equals was clicked!");
-  // }
-
+  if (operator === "+" && val2Result === true) {
+    result = add(val1, val2);
+    display.textContent = `${result} + `;
+    wasOperatorClicked = true;
+    operator = "+";
+    resultCalculated = false; // so that we can click another num
+    operatorCondition = true;
+    wasOperatorClicked = true;
+    val2Result = false;
+    val1 = result;
+    val2 = "";
+  } else if (operator === "x" && val2Result === true) {
+    result = multiplication(val1, val2);
+    display.textContent = `${result} + `;
+    wasOperatorClicked = true;
+    operator = "+";
+    resultCalculated = false; // so that we can click another num
+    operatorCondition = true;
+    wasOperatorClicked = true;
+    val2Result = false;
+    val1 = result;
+    val2 = "";
+  } else if (operator === "-" && val2Result === true) {
+    result = subtraction(val1, val2);
+    display.textContent = `${result} + `;
+    wasOperatorClicked = true;
+    operator = "+";
+    resultCalculated = false; // so that we can click another num
+    operatorCondition = true;
+    wasOperatorClicked = true;
+    val2Result = false;
+    val1 = result;
+    val2 = "";
+  } else if (operator === "÷" && val2Result === true) {
+    result = div(val1, val2);
+    display.textContent = `${result} + `;
+    wasOperatorClicked = true;
+    operator = "+";
+    resultCalculated = false; // so that we can click another num
+    operatorCondition = true;
+    wasOperatorClicked = true;
+    val2Result = false;
+    val1 = result;
+    val2 = "";
+  }
   operatorCondition = true;
 });
 subtract.addEventListener("click", () => {
@@ -96,6 +141,51 @@ subtract.addEventListener("click", () => {
     resultCalculated = false;
     val1 = result;
     console.log("result was calculated");
+    val2 = "";
+  }
+  if (operator === "+" && val2Result === true) {
+    result = add(val1, val2);
+    display.textContent = `${result} - `;
+    wasOperatorClicked = true;
+    operator = "-";
+    resultCalculated = false; // so that we can click another num
+    operatorCondition = true;
+    wasOperatorClicked = true;
+    val2Result = false;
+    val1 = result;
+    val2 = "";
+  } else if (operator === "x" && val2Result === true) {
+    result = multiplication(val1, val2);
+    display.textContent = `${result} - `;
+    wasOperatorClicked = true;
+    operator = "-";
+    resultCalculated = false; // so that we can click another num
+    operatorCondition = true;
+    wasOperatorClicked = true;
+    val2Result = false;
+    val1 = result;
+    val2 = "";
+  } else if (operator === "-" && val2Result === true) {
+    result = subtraction(val1, val2);
+    display.textContent = `${result} -`;
+    wasOperatorClicked = true;
+    operator = "-";
+    resultCalculated = false; // so that we can click another num
+    operatorCondition = true;
+    wasOperatorClicked = true;
+    val2Result = false;
+    val1 = result;
+    val2 = "";
+  } else if (operator === "÷" && val2Result === true) {
+    result = div(val1, val2);
+    display.textContent = `${result} - `;
+    wasOperatorClicked = true;
+    operator = "-";
+    resultCalculated = false; // so that we can click another num
+    operatorCondition = true;
+    wasOperatorClicked = true;
+    val2Result = false;
+    val1 = result;
     val2 = "";
   }
   operatorCondition = true;
@@ -113,15 +203,58 @@ multiply.addEventListener("click", () => {
     console.log("result was calculated");
     val2 = "";
   }
+  if (operator === "+" && val2Result === true) {
+    result = add(val1, val2);
+    display.textContent = `${result} x `;
+    wasOperatorClicked = true;
+    operator = "x";
+    resultCalculated = false; // so that we can click another num
+    operatorCondition = true;
+    wasOperatorClicked = true;
+    val2Result = false;
+    val1 = result;
+    val2 = "";
+  } else if (operator === "x" && val2Result === true) {
+    result = multiplication(val1, val2);
+    display.textContent = `${result} x `;
+    wasOperatorClicked = true;
+    operator = "x";
+    resultCalculated = false; // so that we can click another num
+    operatorCondition = true;
+    wasOperatorClicked = true;
+    val2Result = false;
+    val1 = result;
+    val2 = "";
+  } else if (operator === "-" && val2Result === true) {
+    result = subtraction(val1, val2);
+    display.textContent = `${result} x`;
+    wasOperatorClicked = true;
+    operator = "x";
+    resultCalculated = false; // so that we can click another num
+    operatorCondition = true;
+    wasOperatorClicked = true;
+    val2Result = false;
+    val1 = result;
+    val2 = "";
+  } else if (operator === "÷" && val2Result === true) {
+    result = div(val1, val2);
+    display.textContent = `${result} x `;
+    wasOperatorClicked = true;
+    operator = "x";
+    resultCalculated = false; // so that we can click another num
+    operatorCondition = true;
+    wasOperatorClicked = true;
+    val2Result = false;
+    val1 = result;
+    val2 = "";
+  }
   operatorCondition = true;
-
-  // if operator condition > 1 dont do anything    operator = "";
 });
 
 division.addEventListener("click", () => {
   if (wasOperatorClicked === false) {
-    operator = "/";
-    display.textContent += "/";
+    operator = "÷";
+    display.textContent += "÷";
     wasOperatorClicked = true;
   }
   if (resultCalculated === true) {
@@ -131,8 +264,52 @@ division.addEventListener("click", () => {
     console.log("result was calculated");
     val2 = "";
   }
-
-  // if operator condition > 1 dont do anything
+  if (operator === "+" && val2Result === true) {
+    result = add(val1, val2);
+    display.textContent = `${result} ÷ `;
+    wasOperatorClicked = true;
+    operator = "÷";
+    resultCalculated = false; // so that we can click another num
+    operatorCondition = true;
+    wasOperatorClicked = true;
+    val2Result = false;
+    val1 = result;
+    val2 = "";
+  } else if (operator === "x" && val2Result === true) {
+    result = multiplication(val1, val2);
+    display.textContent = `${result} ÷ `;
+    wasOperatorClicked = true;
+    operator = "÷";
+    resultCalculated = false; // so that we can click another num
+    operatorCondition = true;
+    wasOperatorClicked = true;
+    val2Result = false;
+    val1 = result;
+    val2 = "";
+  } else if (operator === "-" && val2Result === true) {
+    result = subtraction(val1, val2);
+    display.textContent = `${result} ÷`;
+    wasOperatorClicked = true;
+    operator = "÷";
+    resultCalculated = false; // so that we can click another num
+    operatorCondition = true;
+    wasOperatorClicked = true;
+    val2Result = false;
+    val1 = result;
+    val2 = "";
+  } else if (operator === "÷" && val2Result === true) {
+    result = div(val1, val2);
+    display.textContent = `${result} ÷ `;
+    wasOperatorClicked = true;
+    operator = "÷";
+    resultCalculated = false; // so that we can click another num
+    operatorCondition = true;
+    wasOperatorClicked = true;
+    val2Result = false;
+    val1 = result;
+    val2 = "";
+  }
+  operatorCondition = true;
 });
 zero.addEventListener("click", () => {
   if (resultCalculated === true) {
@@ -310,19 +487,19 @@ let multiplication = function (inputValue1, inputValue2) {
 let subtraction = function (inputValue1, inputValue2) {
   return new Number(inputValue1) - new Number(inputValue2);
 };
-let divide = function (inputValue1, inputValue2) {
+let div = function (inputValue1, inputValue2) {
   return new Number(inputValue1) / new Number(inputValue2);
 };
 equals.addEventListener("click", () => {
-  equalsWasClicked = true;
   if (operator === "+" && val2Result === true) {
     result = add(val1, val2);
     display.textContent = result;
     resultCalculated = true;
-    console.log(resultCalculated);
     operatorCondition = false;
     wasOperatorClicked = false;
     val2Result = false;
+    console.log(val1);
+    console.log(val2);
   } else if (operator === "x" && val2Result === true) {
     result = multiplication(val1, val2);
     display.textContent = result;
@@ -337,8 +514,8 @@ equals.addEventListener("click", () => {
     operatorCondition = false;
     wasOperatorClicked = false;
     val2Result = false;
-  } else if (operator === "/" && val2Result === true) {
-    result = divide(val1, val2);
+  } else if (operator === "÷" && val2Result === true) {
+    result = div(val1, val2);
     display.textContent = result;
     resultCalculated = true;
     operatorCondition = false;
