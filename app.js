@@ -14,9 +14,16 @@ let subtract = document.getElementById("subtract");
 let multiply = document.getElementById("multiply");
 let division = document.getElementById("division");
 let equals = document.getElementById("equals");
+let decimal = document.getElementById("decimal");
+let clear = document.getElementById("clear");
 
 let val1 = "";
 let val2 = "";
+const substr = ".";
+
+let doesVal1ContainDecimal = "";
+
+console.log(doesVal1ContainDecimal);
 // this is to allow us to determine if its the first num on the left side or right side,
 // if it turns true, the program will add number on the right side. if false, add on the left side
 //e.g   if (operatorCondition === false) {
@@ -78,7 +85,7 @@ plus.addEventListener("click", () => {
   }
   if (resultCalculated === true) {
     operatorCondition = true; // so that left side num can be calculated
-    resultCalculated = false; // so that it doesn't disappear
+    resultCalculated = false; // so that num doesn't disappear
     val1 = result; // result is now val1
     console.log("result was calculated");
     val2 = ""; // val2 is now empty
@@ -522,4 +529,19 @@ equals.addEventListener("click", () => {
     wasOperatorClicked = false;
     val2Result = false;
   }
+});
+
+decimal.addEventListener("click", () => {
+  if (operatorCondition === false && !val1.includes(substr)) {
+    val1 += "."; //pls work
+    display.textContent += ".";
+    console.log(val1);
+  } else if (operatorCondition === true && !val2.includes(substr)) {
+    display.textContent += ".";
+    val2 += ".";
+    val2Result = true;
+  }
+});
+clear.addEventListener("click", () => {
+  window.location.reload();
 });
