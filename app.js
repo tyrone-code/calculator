@@ -22,6 +22,13 @@ let val2 = "";
 const substr = ".";
 let delCharClicked = false;
 let operator = "";
+plus.disabled = true;
+subtract.disabled = true;
+multiply.disabled = true;
+division.disabled = true;
+decimal.disabled = true;
+delChar.disabled = true;
+equals.disabled = true;
 
 // let charToBeRemoved = "";
 // let concatenated = (concatenated += val1);
@@ -79,7 +86,7 @@ let result = 0;
 /// used to reset the values if this is true and result is true the nums will reset and clear the values
 let val2Result = false;
 plus.addEventListener("click", () => {
-  if (wasOperatorClicked === false && display.textContent !== "") {
+  if (wasOperatorClicked === false) {
     operator = "+";
     display.textContent += "+";
     wasOperatorClicked = true;
@@ -344,6 +351,14 @@ zero.addEventListener("click", () => {
 });
 
 one.addEventListener("click", () => {
+  plus.disabled = false;
+  subtract.disabled = false;
+  multiply.disabled = false;
+  division.disabled = false;
+  decimal.disabled = false;
+  delChar.disabled = false;
+  equals.disabled = false;
+
   if (resultCalculated === true && delCharClicked === false) {
     display.textContent = "";
     resultCalculated = false;
@@ -360,6 +375,13 @@ one.addEventListener("click", () => {
   }
 });
 two.addEventListener("click", () => {
+  plus.disabled = false;
+  subtract.disabled = false;
+  multiply.disabled = false;
+  division.disabled = false;
+  decimal.disabled = false;
+  delChar.disabled = false;
+  equals.disabled = false;
   if (resultCalculated === true) {
     display.textContent = "";
     resultCalculated = false;
@@ -376,6 +398,13 @@ two.addEventListener("click", () => {
   }
 });
 three.addEventListener("click", () => {
+  plus.disabled = false;
+  subtract.disabled = false;
+  multiply.disabled = false;
+  division.disabled = false;
+  decimal.disabled = false;
+  delChar.disabled = false;
+  equals.disabled = false;
   if (resultCalculated === true) {
     display.textContent = "";
     resultCalculated = false;
@@ -392,6 +421,13 @@ three.addEventListener("click", () => {
   }
 });
 four.addEventListener("click", () => {
+  plus.disabled = false;
+  subtract.disabled = false;
+  multiply.disabled = false;
+  division.disabled = false;
+  decimal.disabled = false;
+  delChar.disabled = false;
+  equals.disabled = false;
   if (resultCalculated === true) {
     display.textContent = "";
     resultCalculated = false;
@@ -408,6 +444,13 @@ four.addEventListener("click", () => {
   }
 });
 five.addEventListener("click", () => {
+  plus.disabled = false;
+  subtract.disabled = false;
+  multiply.disabled = false;
+  division.disabled = false;
+  decimal.disabled = false;
+  delChar.disabled = false;
+  equals.disabled = false;
   if (resultCalculated === true) {
     display.textContent = "";
     resultCalculated = false;
@@ -424,6 +467,13 @@ five.addEventListener("click", () => {
   }
 });
 six.addEventListener("click", () => {
+  plus.disabled = false;
+  subtract.disabled = false;
+  multiply.disabled = false;
+  division.disabled = false;
+  decimal.disabled = false;
+  delChar.disabled = false;
+  equals.disabled = false;
   if (resultCalculated === true) {
     display.textContent = "";
     resultCalculated = false;
@@ -441,6 +491,13 @@ six.addEventListener("click", () => {
 });
 
 seven.addEventListener("click", () => {
+  plus.disabled = false;
+  subtract.disabled = false;
+  multiply.disabled = false;
+  division.disabled = false;
+  decimal.disabled = false;
+  delChar.disabled = false;
+  equals.disabled = false;
   if (resultCalculated === true) {
     display.textContent = "";
     resultCalculated = false;
@@ -458,6 +515,13 @@ seven.addEventListener("click", () => {
 });
 
 eight.addEventListener("click", () => {
+  plus.disabled = false;
+  subtract.disabled = false;
+  multiply.disabled = false;
+  division.disabled = false;
+  decimal.disabled = false;
+  delChar.disabled = false;
+  equals.disabled = false;
   if (resultCalculated === true) {
     display.textContent = "";
     resultCalculated = false;
@@ -475,6 +539,13 @@ eight.addEventListener("click", () => {
 });
 
 nine.addEventListener("click", () => {
+  plus.disabled = false;
+  subtract.disabled = false;
+  multiply.disabled = false;
+  division.disabled = false;
+  decimal.disabled = false;
+  delChar.disabled = false;
+  equals.disabled = false;
   if (resultCalculated === true) {
     display.textContent = "";
     resultCalculated = false;
