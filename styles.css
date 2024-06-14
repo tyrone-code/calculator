@@ -41,6 +41,43 @@
   background-color: rgb(180, 180, 248);
   color: rgb(10, 10, 10);
 }
+
+#plus {
+  background-color: rgb(50, 223, 235);
+  color: rgb(10, 10, 10);
+}
+#subtract {
+  background-color: rgb(50, 223, 235);
+  color: rgb(10, 10, 10);
+}
+
+#multiply {
+  background-color: rgb(50, 223, 235);
+  color: rgb(10, 10, 10);
+}
+
+#division {
+  background-color: rgb(50, 223, 235);
+  color: rgb(10, 10, 10);
+}
+#removeChar {
+  background-color: rgb(50, 223, 235);
+  color: rgb(10, 10, 10);
+}
+#equals {
+  background-color: rgb(50, 223, 235);
+  color: rgb(10, 10, 10);
+}
+
+#decimal {
+  background-color: rgb(50, 223, 235);
+  color: rgb(10, 10, 10);
+}
+
+#clear {
+  background-color: rgb(50, 223, 235);
+  color: rgb(10, 10, 10);
+}
 #removeChar:hover {
   opacity: 0.6;
   transition: 0.3s;
