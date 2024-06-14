@@ -16,14 +16,16 @@ let division = document.getElementById("division");
 let equals = document.getElementById("equals");
 let decimal = document.getElementById("decimal");
 let clear = document.getElementById("clear");
-
+let delChar = document.getElementById("removeChar");
 let val1 = "";
 let val2 = "";
 const substr = ".";
+let delCharClicked = false;
+let operator = "";
 
-let doesVal1ContainDecimal = "";
+// let charToBeRemoved = "";
+// let concatenated = (concatenated += val1);
 
-console.log(doesVal1ContainDecimal);
 // this is to allow us to determine if its the first num on the left side or right side,
 // if it turns true, the program will add number on the right side. if false, add on the left side
 //e.g   if (operatorCondition === false) {
@@ -50,7 +52,6 @@ let operatorCondition = false;
 let wasOperatorClicked = false;
 // this is used to calculate the functions at the bottom when equals is clicked depending on what operator
 // it will calculate the function based on the operator
-let operator = "";
 // this is to show that if this is true, the final result is calculated if a user clicks on
 // another num afterwards it resets the values.
 // (clicking on a number)
@@ -78,7 +79,7 @@ let result = 0;
 /// used to reset the values if this is true and result is true the nums will reset and clear the values
 let val2Result = false;
 plus.addEventListener("click", () => {
-  if (wasOperatorClicked === false) {
+  if (wasOperatorClicked === false && display.textContent !== "") {
     operator = "+";
     display.textContent += "+";
     wasOperatorClicked = true;
@@ -86,9 +87,9 @@ plus.addEventListener("click", () => {
   if (resultCalculated === true) {
     operatorCondition = true; // so that left side num can be calculated
     resultCalculated = false; // so that num doesn't disappear
-    val1 = result; // result is now val1
-    console.log("result was calculated");
+    val1 = result.toString(); // result is now val1
     val2 = ""; // val2 is now empty
+    // += val1;
   }
   if (operator === "+" && val2Result === true) {
     result = add(val1, val2);
@@ -97,10 +98,11 @@ plus.addEventListener("click", () => {
     operator = "+";
     resultCalculated = false; // so that we can click another num
     operatorCondition = true;
-    wasOperatorClicked = true;
     val2Result = false;
-    val1 = result;
+    val1 = result.toString();
+
     val2 = "";
+    /// += val1;
   } else if (operator === "x" && val2Result === true) {
     result = multiplication(val1, val2);
     display.textContent = `${result} + `;
@@ -110,8 +112,9 @@ plus.addEventListener("click", () => {
     operatorCondition = true;
     wasOperatorClicked = true;
     val2Result = false;
-    val1 = result;
+    val1 = result.toString();
     val2 = "";
+    // += val1;
   } else if (operator === "-" && val2Result === true) {
     result = subtraction(val1, val2);
     display.textContent = `${result} + `;
@@ -123,6 +126,7 @@ plus.addEventListener("click", () => {
     val2Result = false;
     val1 = result;
     val2 = "";
+    // += val1;
   } else if (operator === "÷" && val2Result === true) {
     result = div(val1, val2);
     display.textContent = `${result} + `;
@@ -132,8 +136,9 @@ plus.addEventListener("click", () => {
     operatorCondition = true;
     wasOperatorClicked = true;
     val2Result = false;
-    val1 = result;
+    val1 = result.toString();
     val2 = "";
+    // += val1;
   }
   operatorCondition = true;
 });
@@ -142,11 +147,12 @@ subtract.addEventListener("click", () => {
     operator = "-";
     display.textContent += "-";
     wasOperatorClicked = true;
+    // += "-";
   }
   if (resultCalculated === true) {
     operatorCondition = true;
     resultCalculated = false;
-    val1 = result;
+    val1 = result.toString();
     console.log("result was calculated");
     val2 = "";
   }
@@ -159,8 +165,9 @@ subtract.addEventListener("click", () => {
     operatorCondition = true;
     wasOperatorClicked = true;
     val2Result = false;
-    val1 = result;
+    val1 = result.toString();
     val2 = "";
+    // += val1;
   } else if (operator === "x" && val2Result === true) {
     result = multiplication(val1, val2);
     display.textContent = `${result} - `;
@@ -170,7 +177,7 @@ subtract.addEventListener("click", () => {
     operatorCondition = true;
     wasOperatorClicked = true;
     val2Result = false;
-    val1 = result;
+    val1 = result.toString();
     val2 = "";
   } else if (operator === "-" && val2Result === true) {
     result = subtraction(val1, val2);
@@ -181,7 +188,7 @@ subtract.addEventListener("click", () => {
     operatorCondition = true;
     wasOperatorClicked = true;
     val2Result = false;
-    val1 = result;
+    val1 = result.toString();
     val2 = "";
   } else if (operator === "÷" && val2Result === true) {
     result = div(val1, val2);
@@ -192,7 +199,7 @@ subtract.addEventListener("click", () => {
     operatorCondition = true;
     wasOperatorClicked = true;
     val2Result = false;
-    val1 = result;
+    val1 = result.toString();
     val2 = "";
   }
   operatorCondition = true;
@@ -206,7 +213,7 @@ multiply.addEventListener("click", () => {
   if (resultCalculated === true) {
     operatorCondition = true;
     resultCalculated = false;
-    val1 = result;
+    val1 = result.toString();
     console.log("result was calculated");
     val2 = "";
   }
@@ -219,7 +226,7 @@ multiply.addEventListener("click", () => {
     operatorCondition = true;
     wasOperatorClicked = true;
     val2Result = false;
-    val1 = result;
+    val1 = result.toString();
     val2 = "";
   } else if (operator === "x" && val2Result === true) {
     result = multiplication(val1, val2);
@@ -230,7 +237,7 @@ multiply.addEventListener("click", () => {
     operatorCondition = true;
     wasOperatorClicked = true;
     val2Result = false;
-    val1 = result;
+    val1 = result.toString();
     val2 = "";
   } else if (operator === "-" && val2Result === true) {
     result = subtraction(val1, val2);
@@ -241,7 +248,7 @@ multiply.addEventListener("click", () => {
     operatorCondition = true;
     wasOperatorClicked = true;
     val2Result = false;
-    val1 = result;
+    val1 = result.toString();
     val2 = "";
   } else if (operator === "÷" && val2Result === true) {
     result = div(val1, val2);
@@ -252,7 +259,7 @@ multiply.addEventListener("click", () => {
     operatorCondition = true;
     wasOperatorClicked = true;
     val2Result = false;
-    val1 = result;
+    val1 = result.toString();
     val2 = "";
   }
   operatorCondition = true;
@@ -267,7 +274,7 @@ division.addEventListener("click", () => {
   if (resultCalculated === true) {
     operatorCondition = true;
     resultCalculated = false;
-    val1 = result;
+    val1 = result.toString();
     console.log("result was calculated");
     val2 = "";
   }
@@ -280,7 +287,7 @@ division.addEventListener("click", () => {
     operatorCondition = true;
     wasOperatorClicked = true;
     val2Result = false;
-    val1 = result;
+    val1 = result.toString();
     val2 = "";
   } else if (operator === "x" && val2Result === true) {
     result = multiplication(val1, val2);
@@ -291,7 +298,7 @@ division.addEventListener("click", () => {
     operatorCondition = true;
     wasOperatorClicked = true;
     val2Result = false;
-    val1 = result;
+    val1 = result.toString();
     val2 = "";
   } else if (operator === "-" && val2Result === true) {
     result = subtraction(val1, val2);
@@ -302,7 +309,7 @@ division.addEventListener("click", () => {
     operatorCondition = true;
     wasOperatorClicked = true;
     val2Result = false;
-    val1 = result;
+    val1 = result.toString();
     val2 = "";
   } else if (operator === "÷" && val2Result === true) {
     result = div(val1, val2);
@@ -313,7 +320,7 @@ division.addEventListener("click", () => {
     operatorCondition = true;
     wasOperatorClicked = true;
     val2Result = false;
-    val1 = result;
+    val1 = result.toString();
     val2 = "";
   }
   operatorCondition = true;
@@ -337,7 +344,7 @@ zero.addEventListener("click", () => {
 });
 
 one.addEventListener("click", () => {
-  if (resultCalculated === true) {
+  if (resultCalculated === true && delCharClicked === false) {
     display.textContent = "";
     resultCalculated = false;
     val1 = "";
@@ -497,6 +504,7 @@ let subtraction = function (inputValue1, inputValue2) {
 let div = function (inputValue1, inputValue2) {
   return new Number(inputValue1) / new Number(inputValue2);
 };
+
 equals.addEventListener("click", () => {
   if (operator === "+" && val2Result === true) {
     result = add(val1, val2);
@@ -529,13 +537,16 @@ equals.addEventListener("click", () => {
     wasOperatorClicked = false;
     val2Result = false;
   }
+  if (val2 === 0 && operator === "÷") {
+    display.textContent =
+      "you are trying to open up a portal to another dimension are you?";
+  }
 });
 
 decimal.addEventListener("click", () => {
   if (operatorCondition === false && !val1.includes(substr)) {
     val1 += "."; //pls work
     display.textContent += ".";
-    console.log(val1);
   } else if (operatorCondition === true && !val2.includes(substr)) {
     display.textContent += ".";
     val2 += ".";
@@ -544,4 +555,30 @@ decimal.addEventListener("click", () => {
 });
 clear.addEventListener("click", () => {
   window.location.reload();
+});
+
+delChar.addEventListener("click", () => {
+  // delCharClicked = true;
+  if (val1 && !operator && !val2) {
+    val1 = val1.slice(0, -1);
+    display.textContent = val1;
+  } else if (val1 && operator && !val2) {
+    operator = operator.slice(0, -1);
+    wasOperatorClicked = false;
+    operatorCondition = false;
+    display.textContent = val1 + operator;
+  } else if (val1 && operator && val2 && !resultCalculated) {
+    val2 = val2.slice(0, -1);
+    display.textContent = val1 + operator + val2;
+  } else if (resultCalculated) {
+    resultCalculated = false;
+    operatorCondition = true;
+    wasOperatorClicked = true;
+    display.textContent = val1 + operator + val2;
+  }
+  if (val2 === "") {
+    val2Result = false;
+  } else if (val2 !== "") {
+    val2Result = true;
+  }
 });
