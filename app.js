@@ -333,6 +333,13 @@ division.addEventListener("click", () => {
   operatorCondition = true;
 });
 zero.addEventListener("click", () => {
+  plus.disabled = false;
+  subtract.disabled = false;
+  multiply.disabled = false;
+  division.disabled = false;
+  decimal.disabled = false;
+  delChar.disabled = false;
+  equals.disabled = false;
   if (resultCalculated === true) {
     display.textContent = "";
     resultCalculated = false;
@@ -498,6 +505,7 @@ seven.addEventListener("click", () => {
   decimal.disabled = false;
   delChar.disabled = false;
   equals.disabled = false;
+  console.log("hello world!");
   if (resultCalculated === true) {
     display.textContent = "";
     resultCalculated = false;

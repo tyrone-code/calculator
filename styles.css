@@ -1,7 +1,35 @@
-/* #plus {
-  border: none;
-  color: #fff;
-  background: #4d9b84;
+#calculator-body {
+  border: 5px solid rgb(0, 0, 0);
+  position: absolute;
+  left: 30rem;
+  height: 37rem;
+  width: 26rem;
+}
+
+#display {
+  height: 8rem;
+  font-size: 70px;
+  position: relative;
+  top: -8.5rem;
+  text-align: right;
+  overflow: hidden;
+}
+
+#buttons {
+  position: relative;
+  top: -19.5rem;
+  height: 28.3rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#buttons > * {
+  flex: 1 0 21%; /* explanation below */
+  margin: 5px;
+  height: 5rem;
+  width: 50rem;
+  background-color: rgb(180, 180, 248);
+  font-size: 30px;
+  font-weight: 900;
   cursor: pointer;
-  font-size: 20px;
-} */
+}
