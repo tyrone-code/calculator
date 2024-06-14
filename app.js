@@ -587,7 +587,8 @@ let div = function (inputValue1, inputValue2) {
 equals.addEventListener("click", () => {
   if (operator === "+" && val2Result === true) {
     result = add(val1, val2);
-    display.textContent = result;
+    display.textContent = Math.round(result * 100) / 100;
+
     resultCalculated = true;
     operatorCondition = false;
     wasOperatorClicked = false;
@@ -596,29 +597,28 @@ equals.addEventListener("click", () => {
     console.log(val2);
   } else if (operator === "x" && val2Result === true) {
     result = multiplication(val1, val2);
-    display.textContent = result;
+    display.textContent = Math.round(result * 100) / 100;
     resultCalculated = true;
     operatorCondition = false;
     wasOperatorClicked = false;
     val2Result = false;
   } else if (operator === "-" && val2Result === true) {
     result = subtraction(val1, val2);
-    display.textContent = result;
+    display.textContent = Math.round(result * 100) / 100;
     resultCalculated = true;
     operatorCondition = false;
     wasOperatorClicked = false;
     val2Result = false;
   } else if (operator === "÷" && val2Result === true) {
     result = div(val1, val2);
-    display.textContent = result;
+    display.textContent = Math.round(result * 100) / 100;
     resultCalculated = true;
     operatorCondition = false;
     wasOperatorClicked = false;
     val2Result = false;
   }
-  if (val2 === 0 && operator === "÷") {
-    display.textContent =
-      "you are trying to open up a portal to another dimension are you?";
+  if (val2 === "0" && operator === "÷") {
+    display.textContent = "lmao... error";
   }
 });
 

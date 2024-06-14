@@ -32,4 +32,120 @@
   font-size: 30px;
   font-weight: 900;
   cursor: pointer;
+  color: rgb(0, 0, 0);
+  border: 2px solid;
+}
+#clear:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+  background-color: rgb(180, 180, 248);
+  color: rgb(10, 10, 10);
+}
+#removeChar:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+  background-color: rgb(180, 180, 248);
+  color: rgb(10, 10, 10);
+}
+
+#decimal:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+  background-color: rgb(180, 180, 248);
+  color: rgb(10, 10, 10);
+}
+
+#seven:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+  background-color: rgb(180, 180, 248);
+  color: rgb(10, 10, 10);
+}
+#division:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+  background-color: rgb(180, 180, 248);
+  color: rgb(10, 10, 10);
+}
+
+#eight:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+  background-color: rgb(180, 180, 248);
+  color: rgb(10, 10, 10);
+}
+#nine:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+  background-color: rgb(180, 180, 248);
+  color: rgb(10, 10, 10);
+}
+
+#multiply:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+  background-color: rgb(180, 180, 248);
+  color: rgb(10, 10, 10);
+}
+#four:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+  background-color: rgb(180, 180, 248);
+  color: rgb(10, 10, 10);
+}
+
+#five:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+  background-color: rgb(180, 180, 248);
+  color: rgb(10, 10, 10);
+}
+#six:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+  background-color: rgb(180, 180, 248);
+  color: rgb(10, 10, 10);
+}
+
+#subtract:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+  background-color: rgb(180, 180, 248);
+  color: rgb(10, 10, 10);
+}
+#one:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+  background-color: rgb(180, 180, 248);
+  color: rgb(10, 10, 10);
+}
+#two:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+  background-color: rgb(180, 180, 248);
+  color: rgb(10, 10, 10);
+}
+#three:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+  background-color: rgb(180, 180, 248);
+  color: rgb(10, 10, 10);
+}
+#plus:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+  background-color: rgb(180, 180, 248);
+  color: rgb(10, 10, 10);
+}
+#zero:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+  background-color: rgb(180, 180, 248);
+  color: rgb(10, 10, 10);
+}
+#equals:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+  background-color: rgb(180, 180, 248);
+  color: rgb(10, 10, 10);
 }
