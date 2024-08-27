@@ -186,3 +186,9 @@
   background-color: rgb(180, 180, 248);
   color: rgb(10, 10, 10);
 }
+
+img {
+  width: 2rem;
+  margin-top: 0.6rem;
+  margin-right: 0.1rem;
+}
