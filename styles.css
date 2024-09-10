@@ -12,7 +12,10 @@
   position: relative;
   top: -8.5rem;
   text-align: right;
-  overflow: hidden;
+  overflow: auto;
+  word-wrap: break-word;
+  line-height: 1em; /* a */
+  max-height: 2em; /* a x number of line to show (ex : 2 line)  */
 }
 
 #buttons {
